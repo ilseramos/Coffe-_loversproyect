@@ -2,18 +2,18 @@
     margin: 0 auto;
     color: #b4b7c9;
     background: #c8c8c8;
-    font: 300 16px/18px 'Open Sans', sans-serif;
-    float: left;
-    width: 100%;
+    font: 600 16px/18px 'Open Sans', sans-serif;
+    float: right;
+    width: 100vw;
     height: 100vh;
 }
 .tab{cursor: pointer;}
 .login-box {
-    width: 100%;
+    width: 100vw;
     margin: auto;
-    max-width: 525px;
+    max-width: 425px;
     min-height: 670px;
-    position: relative;
+    position: absolute;
     background: url(https://primerocafe.com.mx/wp-content/uploads/2022/07/ratio-cafe-filtrado.jpg) no-repeat center;
     box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19)
 }
@@ -163,10 +163,6 @@ a {
 }
 .foot {
     text-align: center
-}
-.card {
-    width: 500px;
-    left: 100px
 }
 ::placeholder {
     color: #b3b3b3
