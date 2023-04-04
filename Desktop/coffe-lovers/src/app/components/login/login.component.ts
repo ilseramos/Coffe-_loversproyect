@@ -31,6 +31,13 @@ export class LoginComponent  implements OnInit {
   }
 
   ngOnInit(): void {
+    // validate if the user is logged in localstorage
+    if(localStorage.getItem('user')) {
+      console.log('Hay usuario');
+      this.router.navigate(['/home'])
+    }else {
+      console.log('No hay usuario');
+    }
   }
 
   login() {
@@ -39,27 +46,33 @@ export class LoginComponent  implements OnInit {
 
     this.afAuth.signInWithEmailAndPassword(email, password).then((user) => {
       if(user.user?.emailVerified) {
+        // save user in localstorage
+        localStorage.setItem('user', JSON.stringify(user.user));
         this.router.navigate(['/home'])
       } else {
+        localStorage.setItem('user', JSON.stringify(user.user));
         console.log('Verifica tu cuenta')
-        // this.router.navigate(['/home'])
+        this.router.navigate(['/home'])
       }
-      
+
     }).catch((error) => {
       console.log(error);
     })
   }
 
-  reg(){
+  // funtion for register user on firebase
+  register(): boolean|void{
     const email = this.registerUser.value.email;
     const password = this.registerUser.value.password;
     const confPassword = this.registerUser.value.passConf;
-    
-    console.log(password+' '+confPassword)
     if (password==confPassword) {
-      this.router.navigate(['/home'])
-      return this.afAuth.createUserWithEmailAndPassword(email, password)
-      .catch(function(error) {
+      // validate if the password is the same, register user and redirect to home
+      this.afAuth.createUserWithEmailAndPassword(email, password).then((user) => {
+        // redirect to home
+        this.router.navigate(['/home'])
+        // save user in localstorage
+        localStorage.setItem('user', JSON.stringify(user.user));
+      }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -69,12 +82,11 @@ export class LoginComponent  implements OnInit {
           alert(errorMessage);
         }
         console.log(error);
+        return false
       });
-
     } else {
       alert('La contraseña no coincide')
-      return false
+      console.log(password, confPassword)
     }
   }
-
 }

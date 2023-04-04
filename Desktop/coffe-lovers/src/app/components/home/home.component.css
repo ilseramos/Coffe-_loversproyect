@@ -398,6 +398,78 @@ body {
     margin-bottom: 30px;
 }
 
+.questions__offer{
+    display: block;
+    padding: 20px 0;
+    border-radius: 10px;
+    text-decoration: none;
+    background-color: var(--bg-cta);
+    font-weight: 600;
+    color: var(--color-cta);
+    box-shadow: 0 0 1px rgba(0, 0, 0, .5);
+}
+
+/* details */
+
+details {
+    list-style: none;
+}
+
+details {
+    background-color: #f6f8fa; /* color de fondo cuando no está desplegado */
+}
+
+details[open] {
+    background: #ffffff; /* color de fondo cuando está desplegado */
+}
+
+details summary {
+    font-family: sans-serif; /* tipografía del resumen */
+    font-size: 40px; /* tamaño de la tipografía */
+    padding: 30px 0 30px; /* relleno del resumen */
+    font-weight: 400; /* peso de la tipografía cuando  no está desplegado */
+    list-style: none; /* ocultamos la flecha */
+    cursor: pointer; /* cambia el cursor del puntero */
+}
+
+details[open] summary {
+    font-weight: 600; /* peso de la tipografía cuando está desplegado */
+}
+
+details p {
+    font-family: 'Poppins'; /* tipografía del contenido oculto */
+    font-size: 30px;
+    background: #f6f8fa; /* color de fondo del contenido oculto */
+}
+
+details {
+    position: relative;
+}
+
+details summary::before {
+    position: absolute;
+    font-size: 1.75rem;
+    top: 10px;
+    right: 16px;
+}
+
+details[open] summary::before {
+    -webkit-animation: rotate-emoji 0.6s ease-in-out both;
+    animation: rotate-emoji 0.6s ease-in-out both;
+}
+
+@-webkit-keyframes rotate-emoji {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+
+    100% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
 /* Footer */
 
 .footer{
